@@ -1,0 +1,5 @@
+class Addkidreftotoy < ActiveRecord::Migration[7.0]
+  def change
+    add_reference :toys, :kid, foreign_key: true
+  end
+end

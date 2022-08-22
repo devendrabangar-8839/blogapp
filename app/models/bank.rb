@@ -1,5 +1,3 @@
 class Bank < ApplicationRecord
 
-
-  
 end

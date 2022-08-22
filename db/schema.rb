@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_19_130744) do
-  create_table "amantable", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2022_08_22_143233) do
+  create_table "aman3s", force: :cascade do |t|
     t.string "aman3s_name"
     t.integer "aman3s_id"
     t.string "aman3s_branch_name"
@@ -24,15 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_130744) do
     t.integer "article_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "banks", force: :cascade do |t|
-    t.string "bank_name"
-    t.integer "bank_id"
-    t.string "bank_branch_name"
-    t.string "bank_Location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "book_id"
+    t.index ["book_id"], name: "index_articles_on_book_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -59,6 +52,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_130744) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "dev", force: :cascade do |t|
+    t.string "dev_name"
+    t.integer "dev_id"
+    t.string "dev_branch_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "devendras", force: :cascade do |t|
     t.string "devendras_name"
     t.integer "devendras_id"
@@ -67,12 +68,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_130744) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "devs", force: :cascade do |t|
-    t.string "dev_name"
-    t.integer "dev_id"
-    t.string "dev_branch_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "device", force: :cascade do |t|
+    t.string "device_name"
+    t.integer "device_id"
+    t.string "device_Location"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -80,17 +79,32 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_130744) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "kids", force: :cascade do |t|
+    t.string "name"
+    t.string "father_name"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "mobiles", force: :cascade do |t|
     t.string "mobile_name"
-    t.string "mobile__id"
-    t.string "mobile__email_id"
-    t.string "mobile__mobile_no"
+    t.string "email_id"
+    t.string "mobile_id"
     t.string "mobile_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "pcs", force: :cascade do |t|
+  create_table "money", force: :cascade do |t|
+    t.string "AC_name"
+    t.integer "lastsaving_money"
+    t.integer "total_money"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pc", force: :cascade do |t|
     t.string "pc_name"
     t.integer "pc_model_id"
     t.string "pc_manufacture_company"
@@ -104,6 +118,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_130744) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "computer_id"
+  end
+
+  create_table "physicians", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -121,7 +140,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_130744) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "data"
-    t.string "part_number"
     t.index ["name"], name: "index_products_on_name"
   end
 
@@ -148,6 +166,32 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_130744) do
     t.string "systems_manufacture_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "toys", force: :cascade do |t|
+    t.string "name"
+    t.string "model"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "kids_id"
+    t.integer "kid_id"
+    t.index ["kid_id"], name: "index_toys_on_kid_id"
+  end
+
+  create_table "trains", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trainvisits", force: :cascade do |t|
+    t.integer "train_id"
+    t.integer "visitor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["train_id"], name: "index_trainvisits_on_train_id"
+    t.index ["visitor_id"], name: "index_trainvisits_on_visitor_id"
   end
 
   create_table "transports", force: :cascade do |t|
@@ -184,7 +228,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_130744) do
     t.datetime "updated_at", null: false
     t.string "data"
     t.integer "Mobile_id"
-    t.integer "Product_info"
   end
 
+  create_table "visitors", force: :cascade do |t|
+    t.string "name"
+    t.string "work"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "articles", "books"
+  add_foreign_key "toys", "kids"
 end
