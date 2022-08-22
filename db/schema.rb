@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_08_19_130744) do
-  create_table "aman3s", force: :cascade do |t|
+  create_table "amantable", force: :cascade do |t|
     t.string "aman3s_name"
     t.integer "aman3s_id"
     t.string "aman3s_branch_name"
@@ -22,6 +22,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_130744) do
   create_table "articles", force: :cascade do |t|
     t.string "article_name"
     t.integer "article_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "banks", force: :cascade do |t|
+    t.string "bank_name"
+    t.integer "bank_id"
+    t.string "bank_branch_name"
+    t.string "bank_Location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,14 +59,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_130744) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "dev", force: :cascade do |t|
-    t.string "dev_name"
-    t.integer "dev_id"
-    t.string "dev_branch_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "devendras", force: :cascade do |t|
     t.string "devendras_name"
     t.integer "devendras_id"
@@ -66,10 +67,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_130744) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "device", force: :cascade do |t|
-    t.string "device_name"
-    t.integer "device_id"
-    t.string "device_Location"
+  create_table "devs", force: :cascade do |t|
+    t.string "dev_name"
+    t.integer "dev_id"
+    t.string "dev_branch_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "employees", force: :cascade do |t|
@@ -87,7 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_130744) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "pc", force: :cascade do |t|
+  create_table "pcs", force: :cascade do |t|
     t.string "pc_name"
     t.integer "pc_model_id"
     t.string "pc_manufacture_company"
